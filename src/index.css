@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+/* ─── Tailwind v4 CSS-first theme ─── */
+@theme {
+  /* Core backgrounds */
+  --color-background: #070B14;
+  /* very deep space */
+  --color-surface: #0E1520;
+  /* dark navy panel */
+  --color-surface-alt: #12243A;
+  /* blue-tinted card */
+  --color-surface-warm: #1A1408;
+  /* warm near-black */
+
+  /* Accent colors */
+  --color-accent-glow: #38BDF8;
+  /* soft cyan tech glow */
+  --color-accent-gold: #FACC15;
+  /* heritage gold */
+  --color-accent-teal: #2DD4BF;
+  /* teal variant */
+  --color-accent-amber: #FB923C;
+  /* warm amber */
+  --color-accent-violet: #A78BFA;
+  /* cool violet */
+
+  /* Text */
+  --color-headings: #F1F5F9;
+  --color-body: #94A3B8;
+  --color-muted: #475569;
+
+  /* Fonts */
+  --font-sans: 'Inter', serif;
+  --font-display: 'Outfit', sans-serif;
+}
+
+/* ─── Base styles ─── */
+body {
+  background-color: var(--color-background);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-headings);
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+::selection {
+  background-color: rgb(56 189 248 / 0.3);
+}
+
+/* ─── Section color bands ─── */
+.section-dark {
+  background-color: var(--color-background);
+}
+
+.section-navy {
+  background-color: var(--color-surface);
+}
+
+.section-blue {
+  background-color: var(--color-surface-alt);
+}
+
+.section-warm {
+  background-color: var(--color-surface-warm);
+}
+
+/* ─── Archival grain overlay ─── */
+.archival-grain {
+  position: relative;
+}
+
+.archival-grain::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(150%) brightness(100%);
+}
+
+/* ─── Glassmorphism card ─── */
+.glass-card {
+  background-color: rgb(14 21 32 / 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* ─── Gold card variant ─── */
+.glass-card-gold {
+  background: linear-gradient(135deg, rgb(26 20 8 / 0.8), rgb(14 21 32 / 0.6));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(250 204 21 / 0.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* ─── Glow border ─── */
+.glow-border {
+  position: relative;
+  transition: all 0.5s;
+}
+
+.glow-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(56 189 248 / 0.15);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: all 0.5s;
+}
+
+.glow-border:hover::after {
+  border-color: rgb(56 189 248 / 0.5);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+/* ─── Gold glow border variant ─── */
+.glow-border-gold::after {
+  border-color: rgb(250 204 21 / 0.15);
+}
+
+.glow-border-gold:hover::after {
+  border-color: rgb(250 204 21 / 0.5);
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+}
+
+/* ─── Lenis smooth scroll ─── */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
